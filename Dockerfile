@@ -6,5 +6,6 @@ RUN go get -d -v; \
 
 FROM scratch
 COPY --from=builder /go/src/github.com/bitly/oauth2_proxy/oauth2_proxy /bin/oauth2_proxy
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 ENTRYPOINT ["/bin/oauth2_proxy"]
